@@ -1,0 +1,22 @@
+MVC-model view controller
+
+1.  npm init -y to create a node app
+2. It create a package.json File.
+3. We need package :-
+- Mongoose - DB connect
+- Express - node js framework (To make thing easy)
+- Nodemon - server continuous run(changes detect)
+- dotenv - to read the data from .env 
+
+
+- npm start by creating script  in package.json
+- Script - "start":"nodemon app"
+
+
+username-test12@gmail.com
+password-123
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MGI5YjFkNmQ4ZGFkZjI4NzZkYWE4MCIsImlhdCI6MTY3ODQ4MjIyMiwiZXhwIjoxNjc5MDg3MDIyfQ.6TY3gJhHTs1VkZYSOsMk7en9dYMDPkVnvITBA2kn9Yk
+
+username-test123@gmail.com
+password-1234
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MGI5Y2ZmOGY1NjZkZDhjMzEwZjNmNCIsImlhdCI6MTY3ODQ4MjcwOSwiZXhwIjoxNjc5MDg3NTA5fQ.eaI8fu-vATvdayiUhXLd9fbOyc3tWclrH2wxp06vxQI
