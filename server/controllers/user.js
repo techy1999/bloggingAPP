@@ -6,21 +6,24 @@ const bcrypt = require("bcryptjs");
 const Joi = require("joi");
 
 const registerSchema = Joi.object({
-  title: Joi.string().min(6).required().messages({
-    "string.title": "title must be at least 6 characters long",
-    "any.required": "title is required",
+  name: Joi.string().min(3).required().messages({
+    "string.name": "name must be at least 3 characters long",
+    "any.required": "name is required",
   }),
-  content: Joi.string().min(10).required().messages({
-    "string.content": "title must be at least 10 characters long",
-    "any.required": "title is required",
+  email: Joi.string().min(3).required().email().messages({
+    "string.email": "email must be at least 3 characters long",
+    "any.required": "email is required",
   }),
-  image_url: Joi.string().min(10).required().messages({
-    "string.image_url": "image_url must be at least 10 characters long",
-    "any.required": "image_url is required",
+
+  password: Joi.string().min(6).required().messages({
+    "string.password": "password must be at least 6 characters long",
+    "any.required": "password is required",
   }),
-  vide_url: Joi.string().min(10).required().messages({
-    "string.vide_url": "vide_url must be at least 10 characters long",
-    "any.required": "title is required",
+  experience: Joi.number(),
+  social_profile: Joi.string().min(3).required().messages({
+    "string.social_profile":
+      "social_profile must be at least 3 characters long",
+    "any.required": "social_profile is required",
   }),
 });
 
@@ -100,8 +103,11 @@ exports.login = async (req, res, next) => {
       message: "field is empty",
     });
   }
+
   try {
-    const user = await User.findOne({ email: req.body.email });
+    const user = await User.findOne({ email: req.body.email }).select(
+      "+password"
+    );
 
     if (user) {
       //check for pasword
@@ -134,7 +140,7 @@ exports.login = async (req, res, next) => {
   } catch (error) {
     return res.status(400).json({
       success: false,
-      message: "failed operation",
+      message: `failed operation ${error}`,
     });
   }
 };

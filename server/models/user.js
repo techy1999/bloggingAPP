@@ -12,13 +12,13 @@ const userSchema = new mongoose.Schema(
     },
     password: {
       type: String,
-      min: 10,
-      required: [true, "Content is required"],
+      min: 6,
+      required: [true, "password is required"],
       select: false,
     },
     email: {
       type: String,
-      required: [true, "Image_url is required"],
+      required: [true, "email is required"],
     },
     experience: {
       type: Number,
@@ -34,7 +34,6 @@ const userSchema = new mongoose.Schema(
 
 // Return JSON Web Token [UTIL FOLDER]
 userSchema.methods.getJwtToken = function () {
-  console.log("Inside model this._id", this._id);
   return jwt.sign({ id: this._id }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRES_TIME,
   });
